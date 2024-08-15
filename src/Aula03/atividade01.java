@@ -6,19 +6,17 @@ public class atividade01 {
 	
 	
 	public static void main(String[] args) {
-		
-				
 		Scanner entrada  = new Scanner(System.in);
+		System.out.print("Digite a primeira nota: ");
 		float nota1, nota2, nota3;
 		
-		System.out.print("Digite a primeira nota: ");
-		nota1 = entrada.nextFloat();
+		adicionaNota(nota1);
 		validaNota(nota1);
-		System.out.print("Digite a segunda nota: ");
-		nota2 = entrada.nextFloat();
+		
+		adicionaNota(nota2);
 		validaNota(nota2);
-		System.out.print("Digite a terceira nota: ");
-		nota3 = entrada.nextFloat();
+		
+		adicionaNota(nota3);
 		validaNota(nota3);
 		
 		
@@ -30,9 +28,16 @@ public class atividade01 {
 		
 		
 		
-		entrada.close();
+		
 		
 	}
+	
+		public static void adicionaNota(float nota) {
+			
+			nota = entrada.nextFloat();
+			
+			entrada.close();
+		}
 	
 		public static void validaNota(float nota) {
 			if(nota > 10) {
