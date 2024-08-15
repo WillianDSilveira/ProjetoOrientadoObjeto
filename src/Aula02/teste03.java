@@ -15,10 +15,11 @@ public class teste03 {
 		
 		if(numero1 > numero2) {
 			System.out.println("Dentre os numeros digitados o maior é o:  " + numero1 );
-		}else {
-			
+		}else if(numero2 > numero2){
 			System.out.println("Dentre os numeros digitados o maior é o: " + numero2 );
-		}		
+		}else{	
+			System.out.print("Os numero são iguais.");
+		}
 		
 		entrada.close();
 	}
