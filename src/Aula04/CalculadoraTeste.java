@@ -12,8 +12,8 @@ public class CalculadoraTeste {
 		System.out.println("Somar estatico: " + Calculadora.somar_estatico(3, 3));
 		
 		//c1.somar(2, 2);
-		System.out.println(c1.ultimoresultado());
-		int valor = c1.somar(c1.ultimoresultado(), c1.ultimoresultado());
+		System.out.println(c1.ultimoResultado());
+		int valor = c1.somar(c1.ultimoResultado(), c1.ultimoResultado());
 		System.out.println("valor soma dos resultados:"+ valor);
 	}
 

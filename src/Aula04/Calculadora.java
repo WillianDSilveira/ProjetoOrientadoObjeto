@@ -25,7 +25,7 @@ public class Calculadora {
 		return a-b;
 	}
 	
-	int ultimoresultado() {
+	int ultimoResultado() {
 		return valor;
 	}
 	
