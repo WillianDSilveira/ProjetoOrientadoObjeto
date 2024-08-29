@@ -27,12 +27,13 @@ public class atividade01 {
 
 	// Funcao adiciona nota
 	public static float adicionaNota() {
-		Scanner entrada = new Scanner(System.in);
-		System.out.print("Digite uma nota: ");
-		float nota = entrada.nextFloat();
+		try (Scanner entrada = new Scanner(System.in)) {
+			System.out.print("Digite uma nota: ");
+			float nota = entrada.nextFloat();
 
-		
-		return nota;
+			
+			return nota;
+		}
 
 	}
 
