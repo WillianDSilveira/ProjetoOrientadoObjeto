@@ -14,7 +14,7 @@ public class CarroTeste {
 				"\n Cor: " + c1.getCor() +
 				"\n Cavalos do Motor: " + c1.getM1().getCavalos() +
 				"\n Consumo do Carro: " + c1.getM1().getConsumo() + 
-				"\n Valvulas do Motor: " + c1.getM1().getValvulas());
+				"\n Valvulas do Motor: " + c1.getM1());
 	}
 
 }
