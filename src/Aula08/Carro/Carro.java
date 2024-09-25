@@ -16,7 +16,7 @@ public class Carro {
 		this.ano = ano;
 		this.cor = cor;
 		this.m1 = m1;
-		this.setC1(c1);
+		this.c1 = c1;
 	}
 	//Getters e Setters
 	public int getAno() {
