@@ -19,7 +19,8 @@ public class Pao extends Produto {
     public boolean contemGluten() {
         return percentualGluten > 0;
     }
-
+    
+    // Get e Set
     public void setPercentualGluten(float percentualGluten) {
         this.percentualGluten = percentualGluten;
     }
