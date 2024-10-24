@@ -6,12 +6,12 @@ public class Show {
 	private Ingresso[] ingressos;
 	private int count;
 	
-	 public Show() {
+	public Show() {
 	        ingressos = new Ingresso[4];
 	        count = 0;
 	  }
 
-	 public void adicionarIngresso(Ingresso ingresso) {
+	public void adicionarIngresso(Ingresso ingresso) {
 	        if (count < 4) {
 	            ingressos[count] = ingresso;
 	            count++;
@@ -51,8 +51,7 @@ public class Show {
 	@Override
 	public String toString() {
 		return "Show [ingressos=" + Arrays.toString(ingressos) + ", count=" + count + "]";
-	}
-	
+	}	
 	 
 	 
 }
