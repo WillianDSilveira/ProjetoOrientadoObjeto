@@ -22,7 +22,8 @@ public class Leite extends Produto {
     public boolean contemLactose() {
         return percentualLactose > 0;
     }
-
+    
+    // Get e Set
     public void setPercentualLactose(float percentualLactose) {
         this.percentualLactose = percentualLactose;
     }
