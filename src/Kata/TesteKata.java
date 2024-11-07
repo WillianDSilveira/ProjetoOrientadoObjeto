@@ -4,9 +4,9 @@ public class TesteKata {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Personagem mario = new Personagem();
-		Personagem luigi = new Personagem();
-		Personagem bowser = new Personagem();
+		Personagem mario = new Personagem("MARIO", 1000, 5, true);
+		Personagem luigi = new Personagem("Luigi", 1000, 1, true);
+		Personagem bowser = new Personagem("Bowser", 1000, 10, true);
 		
 		System.out.println("Luigi " + luigi.toString());
 		System.out.println("Bowser " + bowser.toString());

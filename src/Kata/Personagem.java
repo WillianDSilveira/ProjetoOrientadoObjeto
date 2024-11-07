@@ -3,16 +3,10 @@ package Kata;
 import java.util.Objects;
 
 public class Personagem {
+	private String nome;
 	private int saude;
 	private int nivel;
 	private boolean vivo;
-
-	// Construtor: inicializa com 1000 de saúde, nível 1 e status vivo
-	public Personagem() {
-		this.saude = 1000;
-		this.nivel = 1;
-		this.vivo = true;
-	}
 
 	// Método para causar dano a outro personagem
 	public void atacar(Personagem alvo, int dano) {
@@ -24,19 +18,32 @@ public class Personagem {
 		}
 		// Verifica se o personagem e o alvo estao vivos
 		if (this.vivo && alvo.getSaude() >= 1) {
-			alvo.receberDano(dano);
+			alvo.receberDano(alvo, dano);
+			return;
 		}
 
 	}
 
 	// Método para receber dano
-	private void receberDano(int dano) {
+	private void receberDano(Personagem alvo, int dano) {		
 		if (vivo) {
+			
+			if((alvo.getNivel() - this.getNivel()) > 5 ) {
+				dano = dano * 2;
+				System.out.println("DANO DE " + dano + " NO " + alvo.getNome()  );
+			}
+			
+			if((alvo.getNivel() - this.getNivel()) < 5 ) {
+				dano = dano / 2;
+				System.out.println("DANO DE " + dano + " NO " + alvo.getNome()  );
+			}
+			
 			saude -= dano;
 			// O personagem morre se a saúde chegar a zero
 			if (saude <= 0) {
 				saude = 0;
 				vivo = false;
+				System.out.println("Personagem Morreu");
 			}
 		}
 	}
@@ -51,6 +58,12 @@ public class Personagem {
 		// Verifica se o Personagem esta vivo
 		if (this.vivo && alvo.getSaude() >= 1) {
 			alvo.receberCura(quantidade);
+			return;
+		}
+		
+		if (alvo.getSaude() >= 1000) {
+			System.out.println("Vida maxima atingida");
+			return;
 		}
 	}
 
@@ -61,9 +74,40 @@ public class Personagem {
 		}
 	}
 
+	
+	// Construtor: inicializa com 1000 de saúde, nível 1 e status vivo
+	public Personagem() {}
+	
+	public Personagem(String nome) {
+		super();
+		this.nome = nome;
+	}
+	
+	public Personagem(String nome, int saude, int nivel, boolean vivo) {
+		super();
+		this.nome = nome;
+		this.saude = saude;
+		this.nivel = nivel;
+		this.vivo = vivo;
+	}
+
 	// Gets e Sets
+	
+	
 	public int getSaude() {
 		return saude;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public boolean isVivo() {
+		return vivo;
 	}
 
 	public void setSaude(int saude) {
@@ -101,11 +145,7 @@ public class Personagem {
 
 	@Override
 	public String toString() {
-		return "Personagem [saude=" + saude + ", nivel=" + nivel + ", vivo=" + vivo + "]";
+		return this.nome + " [saude=" + saude + ", nivel=" + nivel + ", vivo=" + vivo + "]";
 	}
-	
-	
 
-	
-	
 }
