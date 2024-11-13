@@ -1,4 +1,4 @@
-package Kata;
+package Aula16.Kata;
 
 import java.util.Objects;
 
@@ -10,7 +10,11 @@ public class Personagem {
 
 	// Método para causar dano a outro personagem
 	public void atacar(Personagem alvo, int dano) {
-
+		
+		if (dano < 0) {
+			throw new ExceptionInInitializerError("Error Dano nao pode ser negativo");
+		}
+		
 		// Certifica de que o alvo não é o própio personagem
 		if (this == alvo) {
 			System.out.println("Voce não pode causar dano a si mesmo");
@@ -28,14 +32,15 @@ public class Personagem {
 	private void receberDano(Personagem alvo, int dano) {		
 		if (vivo) {
 			
-			if((alvo.getNivel() - this.getNivel()) > 5 ) {
-				dano = dano * 2;
-				System.out.println("DANO DE " + dano + " NO " + alvo.getNome()  );
+			int novoDano = dano;
+			if((alvo.getNivel() - nivel) >= 5 ) {
+				novoDano = novoDano / 2;
+				System.out.println("DANO REDUZIDO EM " + dano + " NO " + alvo.getNome()  );
 			}
 			
-			if((alvo.getNivel() - this.getNivel()) < 5 ) {
-				dano = dano / 2;
-				System.out.println("DANO DE " + dano + " NO " + alvo.getNome()  );
+			if(( nivel - alvo.getNivel()) >= 5 ) {
+				novoDano = (int) (novoDano * 1.5);
+				System.out.println("DANO AUMENTADO EM " + dano + " NO " + alvo.getNome()  );
 			}
 			
 			saude -= dano;
@@ -50,6 +55,11 @@ public class Personagem {
 
 	// Método para curar
 	public void curar(Personagem alvo, int quantidade) {
+		
+		if (quantidade < 0) {
+			throw new ExceptionInInitializerError("Error Cura nao pode ser negativo");
+		}
+		
 		// Certifica que o usuario cura a si mesmo
 		if (alvo != this) {
 			System.out.println("Voce só pode curar a si mesmo");
@@ -60,7 +70,7 @@ public class Personagem {
 			alvo.receberCura(quantidade);
 			return;
 		}
-		
+		// Certica que o personagem esta com vida maxima
 		if (alvo.getSaude() >= 1000) {
 			System.out.println("Vida maxima atingida");
 			return;
@@ -75,24 +85,25 @@ public class Personagem {
 	}
 
 	
+	
+	
+	
+	
 	// Construtor: inicializa com 1000 de saúde, nível 1 e status vivo
 	public Personagem() {}
 	
 	public Personagem(String nome) {
-		super();
 		this.nome = nome;
 	}
 	
 	public Personagem(String nome, int saude, int nivel, boolean vivo) {
-		super();
 		this.nome = nome;
 		this.saude = saude;
 		this.nivel = nivel;
 		this.vivo = vivo;
-	}
-
-	// Gets e Sets
+	}	
 	
+	// Gets e Sets	
 	
 	public int getSaude() {
 		return saude;

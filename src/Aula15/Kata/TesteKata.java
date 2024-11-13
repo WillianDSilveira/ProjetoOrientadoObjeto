@@ -1,4 +1,4 @@
-package Kata;
+package Aula15.Kata;
 
 public class TesteKata {
 
