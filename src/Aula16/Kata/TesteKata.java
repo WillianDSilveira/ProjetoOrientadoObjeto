@@ -6,7 +6,7 @@ public class TesteKata {
 		
 		
 		try {
-			Personagem mario = new Personagem("MARIO", 1000, 5, true);
+			Personagem mario = new Personagem("MARIO", -1000, 5, true);
 			Personagem luigi = new Personagem("Luigi", 1000, 1, true);
 			Personagem bowser = new Personagem("Bowser", 1000, 10, true);
 			
@@ -35,18 +35,23 @@ public class TesteKata {
 			luigi.curar(luigi, 100);
 			mario.curar(mario, 100);
 			
+			
 			mario.curar(luigi, 100);
 			System.out.println("Luigi " + luigi.toString());
 			System.out.println("Bowser " + bowser.toString());
 			System.out.println("Mario " + mario.toString());
 			System.out.print("\n");
-		} catch(ExcessaoPersonalizada e) {
 			
-			System.out.println("Problema encontrado linha: " + e.getLinhaDoErro());
+			
+			//mario.atacar(mario, -10);			
+			mario.curar(luigi, -100);
+		} catch(ExcessaoPersonalizada e) {
+			System.out.println(e.getMessage() + e.getLinhaDoErro());
 		} catch(Exception e) {
 			System.out.println("Problema encontrado!");
 			e.printStackTrace();			
 			
 	}
 
+	}
 }

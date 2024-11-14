@@ -9,10 +9,10 @@ public class Personagem {
 	private boolean vivo;
 
 	// Método para causar dano a outro personagem
-	public void atacar(Personagem alvo, int dano) {
+	public void atacar(Personagem alvo, int dano) throws ExcessaoPersonalizada{
 		
-		if (dano < 0) {
-			throw new ExceptionInInitializerError("Error Dano nao pode ser negativo");
+		if (dano <= 0) {
+			throw new ExcessaoPersonalizada("Error Dano nao pode ser negativo Linha: ", 12);
 		}
 		
 		// Certifica de que o alvo não é o própio personagem
@@ -54,10 +54,10 @@ public class Personagem {
 	}
 
 	// Método para curar
-	public void curar(Personagem alvo, int quantidade) {
+	public void curar(Personagem alvo, int quantidade) throws ExcessaoPersonalizada {
 		
-		if (quantidade < 0) {
-			throw new ExceptionInInitializerError("Error Cura nao pode ser negativo");
+		if (quantidade <= 0) {
+			throw new ExcessaoPersonalizada("Error Cura nao pode ser negativo linha: ", 58);
 		}
 		
 		// Certifica que o usuario cura a si mesmo
@@ -121,7 +121,10 @@ public class Personagem {
 		return vivo;
 	}
 
-	public void setSaude(int saude) {
+	public void setSaude(int saude) throws Exception{
+		if(saude < 0) {
+			throw (new Exception("Erro saude menor ou igual a 0 )"));
+		}
 		this.saude = saude;
 	}
 
@@ -129,7 +132,10 @@ public class Personagem {
 		return nivel;
 	}
 
-	public void setNivel(int nivel) {
+	public void setNivel(int nivel) throws Exception {
+		if(nivel < 0) {
+			throw (new Exception("Erro nivel menor ou igual a 0)"));
+		}
 		this.nivel = nivel;
 	}
 
