@@ -3,46 +3,42 @@ package Aula16.Kata;
 import java.util.Objects;
 
 public class Personagem {
-	private String nome;
 	private int saude;
 	private int nivel;
 	private boolean vivo;
 
 	// Método para causar dano a outro personagem
-	public void atacar(Personagem alvo, int dano) throws ExcessaoPersonalizada{
-		
+	public void atacar(Personagem alvo, int dano) throws ExcessaoPersonalizada {
 		if (dano <= 0) {
 			throw new ExcessaoPersonalizada("Error Dano nao pode ser negativo Linha: ", 12);
 		}
-		
+
 		// Certifica de que o alvo não é o própio personagem
 		if (this == alvo) {
 			System.out.println("Voce não pode causar dano a si mesmo");
 			return;
 		}
-		// Verifica se o personagem e o alvo estao vivos
+		// Verifica se o personagem e o alvo estão vivos
 		if (this.vivo && alvo.getSaude() >= 1) {
 			alvo.receberDano(alvo, dano);
 			return;
 		}
-
 	}
 
 	// Método para receber dano
-	private void receberDano(Personagem alvo, int dano) {		
+	private void receberDano(Personagem alvo, int dano) {
 		if (vivo) {
-			
 			int novoDano = dano;
-			if((alvo.getNivel() - nivel) >= 5 ) {
+			if ((alvo.getNivel() - nivel) >= 5) {
 				novoDano = novoDano / 2;
-				System.out.println("DANO REDUZIDO EM " + dano + " NO " + alvo.getNome()  );
+				System.out.println("DANO REDUZIDO EM " + dano);
 			}
-			
-			if(( nivel - alvo.getNivel()) >= 5 ) {
+
+			if ((nivel - alvo.getNivel()) >= 5) {
 				novoDano = (int) (novoDano * 1.5);
-				System.out.println("DANO AUMENTADO EM " + dano + " NO " + alvo.getNome()  );
+				System.out.println("DANO AUMENTADO EM " + dano);
 			}
-			
+
 			saude -= dano;
 			// O personagem morre se a saúde chegar a zero
 			if (saude <= 0) {
@@ -55,24 +51,23 @@ public class Personagem {
 
 	// Método para curar
 	public void curar(Personagem alvo, int quantidade) throws ExcessaoPersonalizada {
-		
 		if (quantidade <= 0) {
 			throw new ExcessaoPersonalizada("Error Cura nao pode ser negativo linha: ", 58);
 		}
-		
-		// Certifica que o usuario cura a si mesmo
+
+		// Certifica que o usuário cura a si mesmo
 		if (alvo != this) {
 			System.out.println("Voce só pode curar a si mesmo");
 			return;
 		}
-		// Verifica se o Personagem esta vivo
+		// Verifica se o personagem está vivo
 		if (this.vivo && alvo.getSaude() >= 1) {
 			alvo.receberCura(quantidade);
 			return;
 		}
-		// Certica que o personagem esta com vida maxima
+		// Certifica que o personagem está com vida máxima
 		if (alvo.getSaude() >= 1000) {
-			System.out.println("Vida maxima atingida");
+			System.out.println("Vida máxima atingida");
 			return;
 		}
 	}
@@ -84,46 +79,28 @@ public class Personagem {
 		}
 	}
 
-	
-	
-	
-	
-	
 	// Construtor: inicializa com 1000 de saúde, nível 1 e status vivo
 	public Personagem() {}
-	
-	public Personagem(String nome) {
-		this.nome = nome;
-	}
-	
-	public Personagem(String nome, int saude, int nivel, boolean vivo) {
-		this.nome = nome;
+
+	public Personagem(int saude, int nivel, boolean vivo) {
 		this.saude = saude;
 		this.nivel = nivel;
 		this.vivo = vivo;
-	}	
-	
-	// Gets e Sets	
-	
+	}
+
+	// Gets e Sets
+
 	public int getSaude() {
 		return saude;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
 	}
 
 	public boolean isVivo() {
 		return vivo;
 	}
 
-	public void setSaude(int saude) throws Exception{
-		if(saude < 0) {
-			throw (new Exception("Erro saude menor ou igual a 0 )"));
+	public void setSaude(int saude) throws Exception {
+		if (saude < 0) {
+			throw (new Exception("Erro saude menor ou igual a 0"));
 		}
 		this.saude = saude;
 	}
@@ -133,8 +110,8 @@ public class Personagem {
 	}
 
 	public void setNivel(int nivel) throws Exception {
-		if(nivel < 0) {
-			throw (new Exception("Erro nivel menor ou igual a 0)"));
+		if (nivel < 0) {
+			throw (new Exception("Erro nivel menor ou igual a 0"));
 		}
 		this.nivel = nivel;
 	}
@@ -162,7 +139,6 @@ public class Personagem {
 
 	@Override
 	public String toString() {
-		return this.nome + " [saude=" + saude + ", nivel=" + nivel + ", vivo=" + vivo + "]";
+		return "[saude=" + saude + ", nivel=" + nivel + ", vivo=" + vivo + "]";
 	}
-
 }
