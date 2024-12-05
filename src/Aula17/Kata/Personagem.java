@@ -22,9 +22,12 @@ public class Personagem {
     public int calcularDistancia(Personagem outro) {
         return (int) Math.sqrt(Math.pow(this.posicaoX - outro.posicaoX, 2) + Math.pow(this.posicaoY - outro.posicaoY, 2));
     }
+    
+    
 
     // Método para atacar
     public void atacar(Personagem alvo, int dano, int distancia) throws ExcessaoPersonalizada {
+    	// Validação 
         if (dano <= 0) {
             throw new ExcessaoPersonalizada("Erro: Dano não pode ser negativo", 12);
         }
@@ -33,14 +36,23 @@ public class Personagem {
             System.out.println("Você não pode causar dano a si mesmo.");
             return;
         }
-
-        if (distancia > this.alcance) {
+        
+        // Valida se o alvo e esta ao alcanse
+        if (calcularDistancia(alvo) > this.alcance) {
             System.out.println("O alvo está fora do alcance!");
             return;
         }
+        
 
         if (this.vivo && alvo.getSaude() > 0) {
-            alvo.receberDano(dano);
+        	if(alvo.getNivel() - nivel <= 5) {
+        		dano = dano / 2;        		
+        	}else if(nivel - alvo.getNivel() >= 5){
+        		dano = (int) (dano * 1.5);        		
+        	}
+        	
+        	alvo.receberDano(dano);
+            
         }
     }
 

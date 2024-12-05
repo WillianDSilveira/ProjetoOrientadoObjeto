@@ -6,9 +6,9 @@ public class TesteKata {
 		
 		
 		try {
-			Personagem mario = new Personagem("MARIO", -1000, 5, true);
-			Personagem luigi = new Personagem("Luigi", 1000, 1, true);
-			Personagem bowser = new Personagem("Bowser", 1000, 10, true);
+			Personagem mario = new Personagem(1000, 10, true);
+			Personagem luigi = new Personagem(1000, 1, true);
+			Personagem bowser = new Personagem(1000, 10, true);
 			
 			System.out.println("Luigi " + luigi.toString());
 			System.out.println("Bowser " + bowser.toString());
